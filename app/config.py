@@ -1,17 +1,15 @@
-from os import environ
+from app.sensive import Sensive as sensive
 
 class Config:
-    SQLALCHEMY_DATABASE_URI = "sqlite:///data-dev.db"
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    JSON_SORT_KEYS = False
+    SQLALCHEMY_DATABASE_URI = sensive.SQLALCHEMY_DATABASE_URI
+    SQLALCHEMY_TRACK_MODIFICATIONS = sensive.SQLALCHEMY_TRACK_MODIFICATIONS
+    JSON_SORT_KEYS = sensive.JSON_SORT_KEYS
 
-    MAIL_SERVER = "smtp.sendgrid.net"
-    MAIL_PORT = 587
-    MAIL_USERNAME = "apikey"
-    MAIL_PASSWORD = "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"
-    MAIL_USE_TLS = True
-    MAIL_USE_SSL = False
+    MAIL_SERVER = sensive.MAIL_SERVER
+    MAIL_PORT = sensive.MAIL_PORT
+    MAIL_USERNAME = sensive.MAIL_USERNAME
+    MAIL_PASSWORD = sensive.MAIL_PASSWORD
+    MAIL_USE_TLS = sensive.MAIL_USE_TLS
+    MAIL_USE_SSL = sensive.MAIL_USE_SSL
 
-    SECRET_KEY = "sadg5ad6sg54adsg65sa4dg3sd4ag6s54g6ASDASDASFAFsda54g6sa54"
-    JWT_SECRET_KEY = "sadg5ad6sg54adsg65sa4dg3sd4ag6s54g6ASDASDASFAFsda54g6sa54"
-
+    JWT_SECRET_KEY = sensive.JWT_SECRET_KEY
