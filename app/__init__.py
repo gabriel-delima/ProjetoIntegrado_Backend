@@ -2,6 +2,7 @@ from flask import Flask
 from app.config import Config
 from app.extensions import db, migrate, ma, jwt, mail, cors
 
+from app.user.routes import user_api
 def create_app():
 
     app = Flask(__name__)
@@ -14,4 +15,5 @@ def create_app():
     mail.init_app(app)
     cors.init_app(app, resources = {r"/*":{"origins":"*"}})
 
+    app.register_blueprint(user_api)
     return app
