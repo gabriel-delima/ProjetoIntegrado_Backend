@@ -18,12 +18,12 @@ class LoadRead(MethodView):                 #/data_read/load
         data_read_1 = schema.load({ "type": "uv",
                                     "value": data["uv"],
                                     "sensor_id": 1})
-        data_read.save()
+        data_read_1.save()
         
         data_read_2 = schema.load({ "type": "voltage",
                                     "value": data["voltage"],
                                     "sensor_id": 1})
-        data_read.save()
+        data_read_2.save()
 
 
         return {"data_read_1" : schema.dump(data_read_1), "data_read_2" : schema.dump(data_read_2)}, 200
