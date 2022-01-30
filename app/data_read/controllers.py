@@ -12,9 +12,11 @@ class LoadRead(MethodView):                 #/data_read/load
     
     def post(self):
         read = LoadReadSchema().load(request.json)
-        schema = DataReadSchema
-        schema.load({ "type": "uv",
-                      "value": 31,
-                      "sensor_id": 1})
-                      
-        return {"leitura":read}, 200
+        schema = DataReadSchema()
+        data = {"type": "uv",
+                "value": 31,
+                "sensor_id": 1}
+        data_read = schema.load(data)
+        data_read.save()
+
+        return schema.dump(data_read), 200
