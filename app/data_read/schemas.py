@@ -19,4 +19,3 @@ class DataReadSchema( ma.SQLAlchemySchema):
 class LoadReadSchema(ma.Schema):
     voltage = ma.String(required=True)
     uv = ma.String(required=True)
-

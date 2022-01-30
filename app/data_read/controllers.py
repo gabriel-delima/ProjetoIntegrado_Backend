@@ -11,6 +11,10 @@ from app.utils.filters import filters
 class LoadRead(MethodView):                 #/data_read/load
     
     def post(self):
-        schema = LoadReadSchema()
-        read = schema.load(request.json)
+        read = LoadReadSchema().load(request.json)
+        schema = DataReadSchema
+        schema.load({ "type": "uv",
+                      "value": 31,
+                      "sensor_id": 1})
+                      
         return {"leitura":read}, 200
