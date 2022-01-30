@@ -10,8 +10,8 @@ class DataReadSchema( ma.SQLAlchemySchema):
 
     data_read_id = ma.Integer(dump_only=True)
     type = ma.String(required=True)
-    value = ma.Float(dump_only=True)
-    sensor_id = ma.Integer(dump_only=True)
+    value = ma.Float(required=True)
+    sensor_id = ma.Integer(required=True)
 
     create_time = ma.DateTime(dump_only=True)
     update_time = ma.DateTime(dump_only=True)
