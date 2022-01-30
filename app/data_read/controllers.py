@@ -11,12 +11,19 @@ from app.utils.filters import filters
 class LoadRead(MethodView):                 #/data_read/load
     
     def post(self):
-        read = LoadReadSchema().load(request.json)
+        data = request.json
+        read = LoadReadSchema().load(data)
         schema = DataReadSchema()
-        data = {"type": "uv",
-                "value": 31,
-                "sensor_id": 1}
-        data_read = schema.load(data)
+        
+        data_read_1 = schema.load({ "type": "uv",
+                                    "value": data["uv"],
+                                    "sensor_id": 1})
+        data_read.save()
+        
+        data_read_2 = schema.load({ "type": "voltage",
+                                    "value": data["voltage"],
+                                    "sensor_id": 1})
         data_read.save()
 
-        return schema.dump(data_read), 200
+
+        return {"data_read_1" : schema.dump(data_read_1), "data_read_2" : schema.dump(data_read_2)}, 200
