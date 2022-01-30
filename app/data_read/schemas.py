@@ -17,5 +17,5 @@ class DataReadSchema( ma.SQLAlchemySchema):
     update_time = ma.DateTime(dump_only=True)
 
 class LoadReadSchema(ma.Schema):
-    voltage = ma.String(required=True)
-    uv = ma.String(required=True)
+    voltage = ma.Float(required=True)
+    uv = ma.Float(required=True)
