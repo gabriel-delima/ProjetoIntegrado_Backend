@@ -8,7 +8,7 @@ from app.data_read.schemas import DataReadSchema
 from app.utils.filters import filters
 
 class ListDataReads(MethodView):
-    decorators = [jwt_required()]           #/data_read/all
+    #decorators = [jwt_required()]           #/data_read/all
     def get(self):
 
         schema = filters.getSchema(
@@ -50,7 +50,7 @@ class LoadRead(MethodView):                 #/data_read/load
 
 class DataReadDetails(MethodView):             #/data_read/<int:id>
     
-    decorators = [jwt_required()]
+    #decorators = [jwt_required()]
 
     def get(self,id):
         schema = filters.getSchema(
@@ -67,7 +67,7 @@ class DataReadDetails(MethodView):             #/data_read/<int:id>
 
 class GetLastRead(MethodView):
 
-    decorators = [jwt_required()]
+    #decorators = [jwt_required()]
 
     def get(self):
         data_reads = DataRead.query.filter_by(sensor_id = 1).order_by("create_time").all()
