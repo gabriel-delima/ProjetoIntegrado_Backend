@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 0e3e32aff537
+Revision ID: 82897e344a4d
 Revises: 
-Create Date: 2022-01-30 15:35:59.595760
+Create Date: 2022-02-13 15:38:51.260729
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '0e3e32aff537'
+revision = '82897e344a4d'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -42,8 +42,10 @@ def upgrade():
     sa.Column('create_time', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
     sa.Column('update_time', sa.DateTime(timezone=True), nullable=True),
     sa.Column('data_read_id', sa.Integer(), nullable=False),
-    sa.Column('type', sa.String(length=64), nullable=False),
-    sa.Column('value', sa.Float(), nullable=False),
+    sa.Column('risco', sa.String(length=64), nullable=False),
+    sa.Column('uv', sa.Float(), nullable=False),
+    sa.Column('voltage', sa.Float(), nullable=False),
+    sa.Column('nivel_bateria', sa.String(length=64), nullable=False),
     sa.Column('sensor_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['sensor_id'], ['sensor.sensor_id'], ),
     sa.PrimaryKeyConstraint('data_read_id')
