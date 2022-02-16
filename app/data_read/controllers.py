@@ -1,4 +1,5 @@
 from functools import partial
+from time import time
 from flask import request, jsonify
 from flask.views import MethodView
 from flask_jwt_extended import jwt_required
@@ -6,6 +7,8 @@ from flask_jwt_extended import jwt_required
 from app.data_read.model import DataRead
 from app.data_read.schemas import DataReadSchema
 from app.utils.filters import filters
+
+import datetime 
 
 class ListDataReads(MethodView):
     #decorators = [jwt_required()]           #/data_read/all
@@ -76,8 +79,7 @@ class GetLastRead(MethodView):
         most_recent_read = data_reads[len(data_reads)-1]
         if not most_recent_read:
             return {"error" : "Error when trying to get most recent read"}, 400
-        
-        print(most_recent_read.voltage)
+    
         schema = filters.getSchema(
             qs=request.args, 
             schema_cls=DataReadSchema,

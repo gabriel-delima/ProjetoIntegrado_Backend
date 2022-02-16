@@ -7,6 +7,8 @@ from app.auth.routes import auth_api
 from app.password_recovery.routes import pw_api
 from app.sensor.routes import sensor_api
 from app.data_read.routes import data_read_api
+from app.graphs.routes import graph_api
+
 def create_app():
 
     app = Flask(__name__)
@@ -24,5 +26,6 @@ def create_app():
     app.register_blueprint(pw_api)
     app.register_blueprint(sensor_api)
     app.register_blueprint(data_read_api)
+    app.register_blueprint(graph_api)
 
     return app
