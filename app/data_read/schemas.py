@@ -1,5 +1,8 @@
+import datetime
 from app.extensions import ma
 from app.data_read.model import DataRead
+
+delta = datetime.timedelta( hours=3 )
 
 class DataReadSchema( ma.SQLAlchemySchema):
 
@@ -16,4 +19,4 @@ class DataReadSchema( ma.SQLAlchemySchema):
     nivel_bateria = ma.String(required=True)               
 
     create_time = ma.DateTime(dump_only=True)
-    update_time = ma.DateTime(dump_only=True)
+    update_time = ma.DateTime(dump_only=True)   

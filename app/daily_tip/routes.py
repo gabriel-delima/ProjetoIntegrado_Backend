@@ -1,7 +1,8 @@
 from flask import Blueprint
 from app.daily_tip.controllers import ( ListDailyTips,
                                         DailyTipCreate, 
-                                        DailyTipDetails)
+                                        DailyTipDetails,
+                                        DailyTipRandom)
 
 daily_tip_api = Blueprint("daily_tip_api", __name__)
 
@@ -21,4 +22,10 @@ daily_tip_api.add_url_rule(
     "/daily_tip/<int:id>", 
     view_func= DailyTipDetails.as_view("daily_tip_details"),
     methods=["GET","PATCH","DELETE"]
+)
+
+daily_tip_api.add_url_rule(
+    "/daily_tip/random", 
+    view_func= DailyTipRandom.as_view("daily_random_tip"),
+    methods=["GET"]
 )

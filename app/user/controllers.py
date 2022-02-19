@@ -45,7 +45,7 @@ class UserCreate(MethodView):              #/user/create
 
         user_check = User.query.filter_by(email=data["email"]).first()
         if user_check:
-            return {"error" : "Email already in use"}
+            return {"error" : "Email already in use"}, 401
 
         user.save()
 

@@ -8,6 +8,7 @@ from app.password_recovery.routes import pw_api
 from app.sensor.routes import sensor_api
 from app.data_read.routes import data_read_api
 from app.graphs.routes import graph_api
+from app.daily_tip.routes import daily_tip_api
 
 def create_app():
 
@@ -27,5 +28,6 @@ def create_app():
     app.register_blueprint(sensor_api)
     app.register_blueprint(data_read_api)
     app.register_blueprint(graph_api)
+    app.register_blueprint(daily_tip_api)
 
     return app
