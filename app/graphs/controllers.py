@@ -103,6 +103,7 @@ class MaxUvByDayGraph(MethodView):
                 if temp_day_index >= limit_day_index:
                     if temp_day_index != day_index_now:
                         changed_index = True
+                        day_index_now = temp_day_index
 
                     uv_now = data_reads[i].uv
 
