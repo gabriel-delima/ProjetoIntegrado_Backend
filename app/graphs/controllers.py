@@ -157,6 +157,6 @@ class MaxUvByDayGraph(MethodView):
                     print(changed_index)
                     value_list.append(uv_max)
                     time_list.append(uv_max_datetime)
-                    i = -1
+                    break
 
         return {"value_list" : value_list, "time_list":time_list}, 200
