@@ -102,12 +102,24 @@ class MaxUvByDayGraph(MethodView):
                     
                 if temp_day_index >= limit_day_index:
                     if temp_day_index != day_index_now:
+                        print("Entrei aqui --------- 0")
+                        print(uv_max)
+                        print(temp_day_index)
+                        print(i)
+                        print(day_index_now)
+                        print(changed_index)
                         changed_index = True
                         day_index_now = temp_day_index
 
                     uv_now = data_reads[i].uv
 
                     if changed_index == True :
+                        print("Entrei aqui --------- 1")
+                        print(uv_max)
+                        print(temp_day_index)
+                        print(i)
+                        print(day_index_now)
+                        print(changed_index)
                         value_list.append(uv_max)
                         time_list.append(uv_max_datetime)
                         uv_max = uv_now
@@ -115,20 +127,34 @@ class MaxUvByDayGraph(MethodView):
                         changed_index = False
 
                     if uv_now > uv_max:
+                        print("Entrei aqui --------- 2")
+                        print(uv_max)
+                        print(temp_day_index)
+                        print(i)
+                        print(day_index_now)
+                        print(changed_index)
                         uv_max = uv_now
                         uv_max_datetime = temp_day
                         
+
+
+                    if(i == 0):
+                        print("Entrei aqui --------- 3")
+                        print(uv_max)
+                        print(temp_day_index)
+                        print(i)
+                        print(day_index_now)
+                        print(changed_index)
+                        value_list.append(uv_now)
+                        time_list.append(temp_day)                    
+
+                else:
+                    print("Entrei aqui --------- 4")
                     print(uv_max)
                     print(temp_day_index)
                     print(i)
                     print(day_index_now)
                     print(changed_index)
-
-                    if(i == 0):
-                        value_list.append(uv_now)
-                        time_list.append(temp_day)                    
-
-                else:
                     value_list.append(uv_max)
                     time_list.append(uv_max_datetime)
                     i = -1
