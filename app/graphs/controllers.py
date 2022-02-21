@@ -34,7 +34,7 @@ class OneDayGraph(MethodView):
                 print(temp_day_index)
                 if day_index == temp_day_index:
                     value_list.append(data_reads[i].uv)
-                    time_list.append(temp_day)
+                    time_list.append(temp_day.strftime("%H:%M"))
                 else:
                     i = -1
 
