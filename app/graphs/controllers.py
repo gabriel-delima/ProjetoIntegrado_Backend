@@ -109,8 +109,7 @@ class MaxUvByDayGraph(MethodView):
 
                     if changed_index == True :
                         value_list.append(uv_max)
-                        time_list.append(uv_max_datetime)
-                        print(uv_max_datetime.strftime("%d/%m/%Y"))
+                        time_list.append(uv_max_datetime.strftime("%d/%m/%Y"))
                         uv_max = uv_now
                         uv_max_datetime = temp_day
                         changed_index = False
@@ -123,11 +122,11 @@ class MaxUvByDayGraph(MethodView):
 
                     if(i == 0):
                         value_list.append(uv_now)
-                        time_list.append(temp_day)                    
+                        time_list.append(temp_day.strftime("%d/%m/%Y"))                    
 
                 else:
                     value_list.append(uv_max)
-                    time_list.append(uv_max_datetime)
+                    time_list.append(uv_max_datetime.strftime("%d/%m/%Y"))
                     break
 
         return {"value_list" : value_list, "time_list":time_list}, 200
