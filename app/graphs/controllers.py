@@ -31,7 +31,6 @@ class OneDayGraph(MethodView):
             if data_reads[i].create_time.isocalendar()[0] == year:     
                 temp_day = data_reads[i].create_time.replace(tzinfo=datetime.timezone.utc).astimezone(tz=None)     
                 temp_day_index = temp_day.isocalendar()[1]*7+temp_day.isocalendar()[2]
-                print(temp_day_index)
                 if day_index == temp_day_index:
                     value_list.append(data_reads[i].uv)
                     time_list.append(temp_day.strftime("%H:%M"))
