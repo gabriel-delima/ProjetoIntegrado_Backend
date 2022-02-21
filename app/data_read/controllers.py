@@ -31,11 +31,11 @@ class LoadRead(MethodView):                 #/data_read/load
 
         voltage = data["voltage"]
         
-        if (voltage >= 0 or voltage < 3.37):
+        if (voltage >= 0 and voltage < 3.37):
             nivel_bateria = "Bateria Muito Baixa"
-        elif (voltage >= 3.37 or voltage < 3.65):
+        elif (voltage >= 3.37 and voltage < 3.65):
             nivel_bateria = "Bateria Baixa"
-        elif (voltage >= 3.65 or voltage < 4):
+        elif (voltage >= 3.65 and voltage < 4):
             nivel_bateria = "Bateria Média"
         elif (voltage >= 4):
             nivel_bateria = "Bateria Alta"
