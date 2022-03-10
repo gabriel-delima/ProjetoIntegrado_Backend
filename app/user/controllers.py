@@ -45,7 +45,7 @@ class UserCreate(MethodView):              #/user/create
 
         user_check = User.query.filter_by(email=data["email"]).first()
         if user_check:
-            return {"error" : "Email already in use"}
+            return {"error" : "Email already in use"}, 401
 
         user.save()
 
@@ -64,6 +64,8 @@ class UserDetails(MethodView):             #/user/<int:id>
     decorators = [jwt_required()]
 
     def get(self,id):
+        if get_jwt_identity() != id:
+            return {"error": "User not allowed"}, 400
         schema = filters.getSchema(
             qs=request.args,
             schema_cls=UserSchema
@@ -72,6 +74,8 @@ class UserDetails(MethodView):             #/user/<int:id>
         return schema.dump(user), 200
 
     def patch(self,id):
+        if get_jwt_identity() != id:
+            return {"error": "User not allowed"}, 400
         user = User.query.get_or_404(id)
         schema = UserSchema(exclude=['password','email'])
         user = schema.load(request.json, instance = user, partial=True)

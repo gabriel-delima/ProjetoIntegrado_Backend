@@ -3,7 +3,9 @@
 - [User](#User)
 - [Auth](#Auth)
 - [Password_Recovery](#Password_Recovery)
-
+- [Data_Read](#Data_Read)
+- [Graph](#Graph)
+- [Daily_Tip](#Daily_Tip)
 ---
 
 ## User
@@ -19,14 +21,14 @@
 | **password**    | Large-Binary                         |
 
 ### Endpoints
-| Função                           | Método  | Endpoint          | Token Necessário       |
-| -------------------------------- | ------- | ----------------- | ---------------------- |
-| **Current**                      | GET     | `/user/current`   | token de admin logado  |
-| **List All**                     | GET     | `/user/all`       | token de usuário logado|
-| **Create**                       | POST    | `/user/create`    | nenhum 	              |
-| **Details**                      | GET     | `/user/<user_id>` | token de admin logado  |
-| **(Partial) Edit**               | PATCH   | `/user/<user_id>` | token de admin logado  |
-| **Delete**                       | DELETE  | `/user/<user_id>` | token de admin logado  |
+| Função                           | Método  | Endpoint          | Token Necessário         |
+| -------------------------------- | ------- | ----------------- | ------------------------ |
+| **Current**                      | GET     | `/user/current`   | token de usuário logado  |
+| **List All**                     | GET     | `/user/all`       | token de usuário logado  |
+| **Create**                       | POST    | `/user/create`    | nenhum 	            |
+| **Details**                      | GET     | `/user/<user_id>` | token de usuário logado  |
+| **(Partial) Edit**               | PATCH   | `/user/<user_id>` | token de usuário logado  |
+| **Delete**                       | DELETE  | `/user/<user_id>` | token de usuário logado  |
 
 ### Exemplos
 POST /user/create
@@ -149,4 +151,64 @@ POST /pw/reset/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6
 204
 {}
 ```
+---
+## Data_Read
+
+### Campos
+
+| Campo            | Tipo                                 |
+| ---------------- | ------------------------------------ |
+| **data_read_id** | integer                              |
+| **risco**        | string                               |
+| **uv**           | Float                                |
+| **voltage**      | Float                                |
+| **nivel_bateria**| Float                                |
+| **sensor_id**    | Integer                              |
+
+### Endpoints
+| Função                           | Método  | Endpoint          | Token Necessário         |
+| -------------------------------- | ------- | ----------------- | ------------------------ |
+| **List All**                     | GET     | `/data_read/all`  | token de usuário logado  |
+| **Load Read**                    | POST    | `/data_read/load` | token de usuário logado  |
+| **Details**                      | GET     | `/data_read/<id>` | token de usuário logado  |
+| **Delete**                       | DELETE  | `/data_read/<id>` | token de usuário logado  |
+| **Get Last Read**                | LAST    | `/data_read/last` | token de usuário logado  |
+
+### Exemplos
+
+---
+## Graph
+
+### Endpoints
+| Função                  | Método  | Endpoint                                      | Token Necessário         |
+| ----------------------- | ------- | --------------------------------------------- | ------------------------ |
+| **One Day Graph**       | GET     | `/graph/one_day/<int:number_of_days_before>`  | token de usuário logado  |
+| **Many Days Graph**     | GET     | `/graph/many_days/<int:number_of_days_before>`| token de usuário logado  |
+| **Max Uv By Day Graph** | GET     | `/graph/max_uv/<int:number_of_days_before>`   | token de usuário logado  |
+
+### Exemplos
+
+---
+## Data_Read
+
+### Campos
+
+| Campo             | Tipo                |
+| ----------------- | ------------------- |
+| **data_tip_id**   | Integer             |
+| **tip**           | String              |
+| **already_shown** | String  (automatic) |
+
+### Endpoints
+| Função                           | Método  | Endpoint               | Token Necessário         |
+| -------------------------------- | ------- | ---------------------- | ------------------------ |
+| **List All**                     | GET     | `/daily_tip/all`       | token de usuário logado  |
+| **Create**                       | POST    | `/daily_tip/create`    | token de usuário logado  |
+| **Details**                      | GET     | `/daily_tip/<user_id>` | token de usuário logado  |
+| **(Partial) Edit**               | PATCH   | `/daily_tip/<user_id>` | token de usuário logado  |
+| **Delete**                       | DELETE  | `/daily_tip/<user_id>` | token de usuário logado  |
+| **Get Random Tip**               | GET     | `/daily_tip/random`    | token de usuário logado  |
+
+### Exemplos
+
 ---
